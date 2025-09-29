@@ -155,7 +155,7 @@ export const useReviewsStore = create<ReviewsStore>()(
     }),
     {
       name: 'reviewsmate-reviews',
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => typeof window !== 'undefined' ? localStorage : null),
       partialize: (state) => ({ 
         userReviews: state.userReviews,
         submissions: state.submissions,

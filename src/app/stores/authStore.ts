@@ -99,7 +99,7 @@ export const useAuthStore = create<AuthStore>()(
     }),
     {
       name: 'reviewsmate-auth',
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => typeof window !== 'undefined' ? localStorage : null),
       partialize: (state) => ({ 
         user: state.user, 
         isAuthenticated: state.isAuthenticated 

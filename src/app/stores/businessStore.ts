@@ -258,7 +258,7 @@ export const useBusinessStore = create<BusinessStore>()(
     }),
     {
       name: 'reviewsmate-businesses',
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => typeof window !== 'undefined' ? localStorage : null),
       partialize: (state) => ({ 
         favorites: state.favorites,
         filters: state.filters,
